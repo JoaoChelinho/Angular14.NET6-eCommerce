@@ -1,0 +1,11 @@
+.custom-color {
+  color: #d83e00;
+}
+
+.active {
+  background-color: #d83e00;
+  border-color: black;
+  outline-color: #d83e00;
+  color: white;
+  font-size: 20px;
+}

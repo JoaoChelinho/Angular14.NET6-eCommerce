@@ -1,0 +1,137 @@
+<div class="table-responsive">
+  <table class="table table-bordered centered">
+    <thead class="thead-dark ">
+      <tr>
+        <th class="text-center align-middle">Opções de Marcas</th>
+        <th class="text-center align-middle">Opções de Categorias</th>
+        <th class="text-center align-middle">Opções de Produtos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="btn-group-vertical btn-block d-flex justify-content-center">
+            <button class="btn btn-outline-success text-green mb-3" (click)="showCreateBrandForm()">Criar Nova Marca</button>
+            <button class="btn btn-outline-secondary mb-3" (click)="showEditBrandForm()">Editar Marca Existente</button>
+          </div>
+        </td>
+        <td>
+          <div class="btn-group-vertical btn-block d-flex justify-content-center">
+            <button class="btn btn-outline-success mb-3" (click)="showCreateCategoryForm()">Criar Nova Categoria</button>
+            <button class="btn btn-outline-secondary mb-3" (click)="showEditCategoryForm()">Editar Categoria Existente</button>
+          </div>
+        </td>
+        <td>
+          <div class="btn-group-vertical btn-block d-flex justify-content-center">
+            <button class="btn btn-outline-success mb-3" (click)="showCreateProductForm()">Criar Novo Produto</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!--Formulário do Editar Categoria-->
+
+<div class="row justify-content-center my-5" *ngIf="showEditCategory">
+  <div class="col-md-6">
+    <form>
+      <div class="form-group">
+        <label for="categoryDropdown">Categoria</label>
+        <select name="categoryId" id="categoryDropdown" class="form-control" [(ngModel)]="selectedCategoryId">
+            <ng-container *ngFor="let category of categories">
+                <option [value]="category.categoryId">{{ category.categoryName }}</option>
+            </ng-container>
+        </select>
+    </div>
+
+      <div class="form-group">
+        <label for="categoryName">Novo nome</label>
+        <input id="categoryName" class="form-control" type="text" [(ngModel)]="editCategoryName" name="editCategoryName">
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="updateCategory()">Guardar</button>
+    </form>
+  </div>
+</div>
+<!--Formulário do Criar Categoria-->
+<div class="row justify-content-center my-5" *ngIf="showCreateCategory">
+  <div class="col-md-6">
+    <form>
+      <div class="form-group">
+        <label for="newCategoryName">Nome da Categoria</label>
+        <input id="newCategoryName" class="form-control" type="text" [(ngModel)]="newCategoryName" name="newCategoryName" />
+      </div>
+      <button type="submit" class="btn btn-success" (click)="createCategory()">Criar</button>
+    </form>
+  </div>
+</div>
+<!--Formulário do Editar Marca-->
+<div class="row justify-content-center my-5" *ngIf="showEditBrand">
+  <div class="col-md-6">
+    <form>
+      <div class="form-group">
+        <label for="brandDropdown">Marca</label>
+        <select name="brandId" id="brandDropdown" class="form-control" [(ngModel)]="selectedBrandId">
+            <ng-container *ngFor="let brand of brands">
+                <option [value]="brand.brandId">{{ brand.brandName }}</option>
+            </ng-container>
+        </select>
+    </div>
+
+      <div class="form-group">
+        <label for="brandName">Novo nome</label>
+        <input id="brandName" class="form-control" type="text" [(ngModel)]="editBrandName" name="editBrandName">
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="updateBrand()">Guardar</button>
+    </form>
+  </div>
+</div>
+<!--Formulário do Criar Marca-->
+<div class="row justify-content-center my-5" *ngIf="showCreateBrand">
+  <div class="col-md-6">
+    <form>
+      <div class="form-group">
+        <label for="newBrandName">Nome da Marca</label>
+        <input id="newBrandName" class="form-control" type="text" [(ngModel)]="newBrandName" name="newBrandName" />
+      </div>
+      <button type="submit" class="btn btn-success" (click)="createBrand()">Criar</button>
+    </form>
+  </div>
+</div>
+<!--Formulário do Criar Produto-->
+<div class="row justify-content-center my-5" *ngIf="showCreateProduct">
+  <div class="col-md-6">
+    <form>
+      <div class="form-group">
+        <label for="productName">Nome do Produto</label>
+        <input id="productName" class="form-control" type="text" [(ngModel)]="newProductName" name="newProductName" />
+      </div>
+      <div class="form-group">
+        <label for="productDescription">Descrição do Produto</label>
+        <textarea id="productDescription" class="form-control" [(ngModel)]="newProductDescription" name="newProductDescription"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="productPrice">Preço do Produto</label>
+        <input id="productPrice" class="form-control" type="number" [(ngModel)]="newProductPrice" name="newProductPrice" />
+      </div>
+      <div class="form-group">
+        <label for="categoryDropdown">Categoria</label>
+        <select name="categoryId" id="categoryDropdown" class="form-control" [(ngModel)]="selectedCategoryId">
+            <ng-container *ngFor="let category of categories">
+                <option [value]="category.categoryId">{{ category.categoryName }}</option>
+            </ng-container>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="brandDropdown">Marca</label>
+        <select name="brandId" id="brandDropdown" class="form-control" [(ngModel)]="selectedBrandId">
+            <ng-container *ngFor="let brand of brands">
+                <option [value]="brand.brandId">{{ brand.brandName }}</option>
+            </ng-container>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-success" (click)="createProduct()">Criar</button>
+    </form>
+  </div>
+</div>
