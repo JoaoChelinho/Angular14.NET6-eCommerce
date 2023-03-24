@@ -1,0 +1,9 @@
+.featured {
+  height: 200px;
+}
+
+img {
+  object-fit: cover;
+  height: 500px;
+  border-radius: 40px;
+}

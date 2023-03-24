@@ -1,10 +1,11 @@
-.logo img {
+.logo {
   width: 30%;
   height: auto;
   max-height: 80px;
   min-width: 175px;
   cursor: pointer;
-  margin-left: 20%;
+  display: block;
+  margin-left: 25px;
 }
 
 .cart-no {
@@ -22,13 +23,31 @@
 a {
   text-decoration: none;
   color: #343a40;
+  font-size: 17px;
 }
 
 a.active {
   color: #d83e00;
-  font-size: 32px;
+  font-size: 19px;
 }
 
 .menu-spacing {
   gap: 40px;
+}
+
+.btn {
+  font-size: 14px;
+  padding: 5px 10px;
+}
+
+.fa {
+  font-size: 25px;
+}
+
+.left{
+  margin-left: 100px;
+}
+
+.right{
+  padding-right: 50px;
 }

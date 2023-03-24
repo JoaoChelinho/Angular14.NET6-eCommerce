@@ -7,6 +7,8 @@ import { SharedModule } from '../shared/shared.module';
 import { ShopRoutingModule } from './shop-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ProductEditComponent } from './product-edit/product-edit.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+
 
 
 
@@ -22,6 +24,9 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
     SharedModule,
     ShopRoutingModule,
     FormsModule,
+  ],
+  exports: [
+    CarouselModule,
   ],
 })
 export class ShopModule { }

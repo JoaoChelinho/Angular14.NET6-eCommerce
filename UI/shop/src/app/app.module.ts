@@ -6,15 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
-import { HomeModule } from './home/home.module';
 import { EditsComponent } from './edits/edits.component';
 import { FormsModule } from '@angular/forms';
+import { HomeModule } from './home/home.module';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    EditsComponent,
-  ],
+  declarations: [AppComponent, EditsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,9 +20,10 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     CoreModule,
     HomeModule,
-    FormsModule
+    FormsModule,
   ],
+
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
