@@ -10,9 +10,10 @@ import { EditsComponent } from './edits/edits.component';
 import { FormsModule } from '@angular/forms';
 import { HomeModule } from './home/home.module';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
-  declarations: [AppComponent, EditsComponent],
+  declarations: [AppComponent, EditsComponent, CartComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
