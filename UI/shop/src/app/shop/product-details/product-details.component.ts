@@ -18,6 +18,7 @@ export class ProductDetailsComponent implements OnInit {
   cartItems: CartItem[] = [];
 
 
+
   constructor(
     private shopService: ShopService,
     private activatedRoute: ActivatedRoute,
@@ -58,18 +59,45 @@ export class ProductDetailsComponent implements OnInit {
       this.cartService.addToCart(cartItem);
       console.log('Product added to cart');
       this.cartItemCount = this.cartService.getCartItemCount();
+      this.cartService.updateCartItemQuantity();
     }
   }
 
-  decreaseQuantity(index: number) {
-    this.cartService.decreaseQuantity(index);
-    this.cartItems = this.cartService.getCartItems();
+  decreaseQuantity() {
+    const cartItemIndex = this.cartItems.findIndex(item => item.productName === this.product?.productName);
+    if (cartItemIndex >= 0) {
+      if (this.cartItems[cartItemIndex].quantity > 1) {
+        this.cartService.decreaseQuantity(cartItemIndex);
+        this.cartItemCount = this.cartService.getCartItemCount();
+        this.cartService.updateCartItemQuantity();
+      } else {
+        this.cartService.removeItem(cartItemIndex);
+        this.cartItemCount = this.cartService.getCartItemCount();
+        this.cartService.updateCartItemQuantity();
+      }
+    }
   }
 
-  increaseQuantity(index: number) {
-    this.cartService.increaseQuantity(index);
-    this.cartItems = this.cartService.getCartItems();
-  }
+  increaseQuantity() {
+    const cartItemIndex = this.cartItems.findIndex(item => item.productName === this.product?.productName);
+    if (cartItemIndex >= 0) {
+      this.cartService.increaseQuantity(cartItemIndex);
+    } else {
+      if (this.product) {
+        const cartItem: CartItem = {
+          productId: this.product.productId,
+          productName: this.product.productName,
+          productPrice: this.product.productPrice,
+          quantity: 1,
+        };
+        this.cartService.addToCart(cartItem);
+        console.log('Product added to cart');
+        this.cartItemCount = this.cartService.getCartItemCount();
+        this.cartService.updateCartItemQuantity();
+      }
+    }
+    }
+
 
 
 }

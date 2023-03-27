@@ -6,9 +6,7 @@ import { CartItem } from '../shared/models/cart-item';
   providedIn: 'root'
 })
 export class CartService {
-  getCartItemCountForProduct(productId: number): number {
-    throw new Error('Method not implemented.');
-  }
+
   cartItems: CartItem[] = [];
   products: Product[] = [];
   cartUpdated = new EventEmitter<number>();
@@ -72,5 +70,29 @@ export class CartService {
     return this.cartItems.length;
   }
 
+  getProductQuantityInCart(productId: number): number {
+    const cartItem = this.cartItems.find(item => item.productId === productId);
+    return cartItem ? cartItem.quantity : 0;
+  }
+
+  updateCartItemQuantity() {
+    this.cartItems.forEach(item => {
+      const cartNoElement = document.getElementById(`cart-${item.productId}`);
+      if (cartNoElement) {
+        cartNoElement.innerHTML = item.quantity.toString();
+      }
+    });
+  }
+
+  getQuantityByProductName(productName: string): number {
+    const existingCartItem = this.cartItems.find(
+      (item) => item.productName === productName
+    );
+    if (existingCartItem) {
+      return existingCartItem.quantity;
+    } else {
+      return 0;
+    }
+  }
 
 }

@@ -13,6 +13,7 @@ export class HeaderComponent {
   constructor(private cartService: CartService) {}
 
   ngOnInit() {
+    this.cartItemCount = this.cartService.getCartItemCount();
     this.cartService.cartUpdated.subscribe((cartItemCount: number) => {
       this.cartItemCount = cartItemCount;
     });

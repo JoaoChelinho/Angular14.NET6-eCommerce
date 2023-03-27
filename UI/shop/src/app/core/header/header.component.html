@@ -23,7 +23,7 @@
     <a href="" class="btn btn-outline-secondary me-3">Registo</a>
     <a class="position-relative">
       <i routerLink="/cart" class="fa fa-shopping-cart fa-2x me-5 text-dark right"></i>
-      <div class="cart-no">{{ cartItemCount }}</div>
+      <div class="cart-no" *ngIf="cartItemCount > 0">{{ cartItemCount }}</div>
     </a>
   </div>
 </header>
