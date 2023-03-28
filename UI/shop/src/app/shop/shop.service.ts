@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Brand } from '../shared/models/brand';
 import { ProductCategory } from '../shared/models/category';
 import { Product } from '../shared/models/product';
@@ -87,5 +87,12 @@ export class ShopService {
   createProduct(product: Product): Observable<any> {
     return this.http.post(this.baseUrl + 'Product/Create', product);
   }
+
+  getNewestProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.baseUrl + 'Product/GetAllbyIDDecrescente').pipe(
+      map(products => products.slice(0, 10))
+    );
+  }
+
 
 }
