@@ -5,7 +5,7 @@
     <nav class="my-2 text-uppercase fs-3 d-flex menu-spacing">
       <!--  <a class="p-2" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a> -->
       <a class="p-2 left" routerLink="/shop" routerLinkActive="active">Produtos</a>
-      <a class="p-2" routerLink="/" routerLinkActive="">Novidades</a>
+      <a class="p-2" routerLink="/novidades" routerLinkActive="active">Novidades</a>
       <a class="p-2" routerLink="/edits" routerLinkActive="active">Gestão</a>
     </nav>
   </div>
@@ -19,8 +19,9 @@
   </div>
 
   <div class="d-flex align-items-center ms-auto">
-    <a href="" class="btn btn-outline-secondary me-2">Login</a>
-    <a href="" class="btn btn-outline-secondary me-3">Registo</a>
+    <a routerLink="/login" class="btn btn-outline-secondary me-2">Login</a>
+    <a routerLink="/registo" class="btn btn-outline-secondary me-3">Registo</a>
+
     <a class="position-relative">
       <i routerLink="/cart" class="fa fa-shopping-cart fa-2x me-5 text-dark right"></i>
       <div class="cart-no" *ngIf="cartItemCount > 0">{{ cartItemCount }}</div>

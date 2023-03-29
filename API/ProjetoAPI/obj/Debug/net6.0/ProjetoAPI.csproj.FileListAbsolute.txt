@@ -378,3 +378,9 @@ C:\Users\Chelas\Desktop\Projeto\FASE1\GITHUBREPO\Shop\API\ProjetoAPI\obj\Debug\n
 C:\Users\Chelas\Desktop\Projeto\FASE1\GITHUBREPO\Shop\API\ProjetoAPI\obj\Debug\net6.0\ProjetoAPI.pdb
 C:\Users\Chelas\Desktop\Projeto\FASE1\GITHUBREPO\Shop\API\ProjetoAPI\obj\Debug\net6.0\ProjetoAPI.genruntimeconfig.cache
 C:\Users\Chelas\Desktop\Projeto\FASE1\GITHUBREPO\Shop\API\ProjetoAPI\obj\Debug\net6.0\ref\ProjetoAPI.dll
+C:\Users\Chelas\Desktop\Projeto\FASE1\GITHUBREPO\Shop\API\ProjetoAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Chelas\Desktop\Projeto\FASE1\GITHUBREPO\Shop\API\ProjetoAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Chelas\Desktop\Projeto\FASE1\GITHUBREPO\Shop\API\ProjetoAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Chelas\Desktop\Projeto\FASE1\GITHUBREPO\Shop\API\ProjetoAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Chelas\Desktop\Projeto\FASE1\GITHUBREPO\Shop\API\ProjetoAPI\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Chelas\Desktop\Projeto\FASE1\GITHUBREPO\Shop\API\ProjetoAPI\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll

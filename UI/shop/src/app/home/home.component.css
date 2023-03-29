@@ -1,9 +1,20 @@
-.featured {
+.featured-carousel {
   height: 200px;
 }
 
-.carouselimg {
+.featured-carousel img {
   object-fit: cover;
   height: 500px;
   border-radius: 40px;
 }
+
+.name {
+  color: #d83e00;
+  font-weight: bold;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  transition: all 0.2s ease-in-out;
+}
+

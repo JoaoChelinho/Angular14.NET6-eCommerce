@@ -12,9 +12,5 @@ namespace ProjetoAPI.Models
         [MinLength(1), MaxLength(50)]
         public string OrderStatus { get; set; }
 
-        public int UserId { get; set; }
-        [ForeignKey("UserId")]
-        public User User { get; set; }
-
     }
 }

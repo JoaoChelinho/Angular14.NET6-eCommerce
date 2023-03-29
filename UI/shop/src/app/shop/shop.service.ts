@@ -90,7 +90,7 @@ export class ShopService {
 
   getNewestProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.baseUrl + 'Product/GetAllbyIDDecrescente').pipe(
-      map(products => products.slice(0, 10))
+      map(products => products.slice(0, 9))
     );
   }
 

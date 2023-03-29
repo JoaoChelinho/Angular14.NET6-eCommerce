@@ -1,6 +1,6 @@
-<carousel [isAnimated] = "true">
+<carousel [isAnimated] = "true" class="featured-carousel">
   <slide>
-    <img src="assets/images/wallpaper2.jpg" alt="first slide" style="display: block; width: 100%;" class="carouselimg">
+    <img src="assets/images/wallpaper2.jpg" alt="first slide" style="display: block; width: 100%;">
     <div class="carousel-caption d-none d-md-block">
       <h3>First slide label</h3>
       <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
@@ -16,7 +16,7 @@
 </carousel>
 
 <section>
-  <h2>Novidades</h2>
+  <h2 class="pt-5 pb-5">Novidades</h2>
   <div class="row">
     <div class="col-md-4 mb-4" *ngFor="let product of newestProducts">
       <div class="card h-100 shadow-sm">
@@ -29,7 +29,6 @@
           </a>
           <span class="mb-2">{{product.productPrice | currency:'€'}}</span>
           <div class="btn-group mt-auto">
-            <button class="btn btn-outline-secondary fa fa-shopping-cart me-2"></button>
             <button routerLink="/shop/{{product.productId}}" class="btn btn-outline-secondary">Detalhes</button>
           </div>
         </div>
