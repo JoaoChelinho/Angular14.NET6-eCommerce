@@ -3,13 +3,13 @@
   <form>
     <div class="form-group">
       <label for="username" class="form-control-label">Username</label>
-      <input type="text" id="username" name="username" class="form-control" required>
+      <input type="text" id="username" name="username" class="form-control"  [(ngModel)]="username" required>
     </div>
     <div class="form-group">
       <label for="email" class="form-control-label">Email</label>
-      <input type="email" id="email" name="email" class="form-control" required>
+      <input type="email" id="email" name="email" class="form-control" [(ngModel)]="email" required>
     </div>
-    <label for="password">Password</label>
+    <label for="password" class="form-control-label" [(ngModel)]="password" required>Password</label>
     <div class="input-group">
       <input type="password" id="password" name="password" class="form-control" [(ngModel)]="password">
       <button type="button" class="btn btn-outline-secondary show-password" (click)="togglePasswordVisibility()">
@@ -17,9 +17,8 @@
         <span *ngIf="showPassword">Esconder senha</span>
       </button>
     </div>
-
-    <div class="form-group">
-      <button type="submit" class="btn btn-primary">Register</button>
+    <div class="form-group mt-3">
+      <button type="submit" class="btn btn-primary" (click)="registerUser($event)">Registo</button>
     </div>
   </form>
 </div>

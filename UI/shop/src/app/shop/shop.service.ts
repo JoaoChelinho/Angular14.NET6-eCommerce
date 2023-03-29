@@ -1,9 +1,10 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Brand } from '../shared/models/brand';
 import { ProductCategory } from '../shared/models/category';
 import { Product } from '../shared/models/product';
+import { Account } from '../shared/models/account';
 
 @Injectable({
   providedIn: 'root',
@@ -92,6 +93,12 @@ export class ShopService {
     return this.http.get<Product[]>(this.baseUrl + 'Product/GetAllbyIDDecrescente').pipe(
       map(products => products.slice(0, 9))
     );
+  }
+
+  registerUser(data: any): Observable<any> {
+    const url = this.baseUrl + 'Authenticate/Register';
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<any>(url, data, { headers });
   }
 
 

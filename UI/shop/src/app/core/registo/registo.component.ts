@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ShopService } from 'src/app/shop/shop.service';
 
 @Component({
   selector: 'app-registo',
@@ -6,7 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./registo.component.css']
 })
 export class RegistoComponent {
-  password: string | undefined;
+  username: string = '';
+  email: string = '';
+  password: string = '';
   showPassword: boolean = false;
 
   togglePasswordVisibility() {
@@ -17,6 +20,30 @@ export class RegistoComponent {
     } else {
       passwordField?.setAttribute("type", "password");
     }
+  }
+
+  constructor(private shopService: ShopService) { }
+
+  registerUser(event: { preventDefault: () => void; }) {
+    event.preventDefault();
+
+    let user = {
+      username: this.username,
+      email: this.email,
+      password: this.password
+    };
+
+    this.shopService.registerUser(user).subscribe(
+      response => {
+        user = response;
+        console.log(response);
+        // Adicione aqui a lógica para lidar com a resposta
+      },
+      error => {
+        console.log(error);
+
+      }
+    );
   }
 }
 
