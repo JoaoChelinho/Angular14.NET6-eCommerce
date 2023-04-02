@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Brand } from '../shared/models/brand';
 import { ProductCategory } from '../shared/models/category';
 import { Product } from '../shared/models/product';
@@ -10,6 +10,9 @@ import { Account } from '../shared/models/account';
   providedIn: 'root',
 })
 export class ShopService {
+  private token: string = '';
+  isUserLoggedIn = false;
+
   saveCategory(arg0: number, editCategoryName: string) {
     throw new Error('Method not implemented.');
   }
@@ -70,10 +73,7 @@ export class ShopService {
     const body = { categoryName };
     return this.http.post(url, body);
   }
-  updateBrandName(
-    brandId: number,
-    brandName: string
-  ): Observable<any> {
+  updateBrandName(brandId: number, brandName: string): Observable<any> {
     const url = `${this.baseUrl}Brand/UpdatebyID?id=${brandId}`;
     const body = { brandName };
     return this.http.put(url, body);
@@ -90,8 +90,14 @@ export class ShopService {
   }
 
   getNewestProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.baseUrl + 'Product/GetAllbyIDDecrescente').pipe(
-      map(products => products.slice(0, 9))
+    return this.http
+      .get<Product[]>(this.baseUrl + 'Product/GetAllbyIDDecrescente')
+      .pipe(map((products) => products.slice(0, 9)));
+  }
+
+  getAllNewestProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(
+      this.baseUrl + 'Product/GetAllbyIDDecrescente'
     );
   }
 
@@ -100,6 +106,49 @@ export class ShopService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<any>(url, data, { headers });
   }
+
+  loginUser(user: any): Observable<any> {
+    const url = `${this.baseUrl}Authenticate/Login`;
+    return this.http.post(url, user).pipe(
+      map((response: any) => {
+        const token = response.token;
+        const role = response.role;
+        localStorage.setItem('token', token);
+        localStorage.setItem('role', role);
+        window.location.href = '/';
+        return response;
+      })
+    );
+  }
+
+  logout(): Observable<any> {
+    const url = `${this.baseUrl}Authenticate/Logout`;
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    });
+    return this.http.post(url, {}, { headers: headers }).pipe(
+      map((response: any) => {
+        this.removeRole();
+        this.removeToken();
+        this.setUserLoggedIn(false);
+        window.location.href = '/';
+        return response;
+      })
+    );
+  }
+
+  removeRole() {
+    localStorage.removeItem('role');
+  }
+
+  removeToken() {
+    localStorage.removeItem('token');
+  }
+
+  setUserLoggedIn(value: boolean) {
+    this.isUserLoggedIn = value;
+  }
+
 
 
 }

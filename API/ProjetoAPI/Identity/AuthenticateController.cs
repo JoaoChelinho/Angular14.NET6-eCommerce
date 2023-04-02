@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -54,11 +56,33 @@ namespace JWTAuthentication.NET6._0.Controllers
                 return Ok(new
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),
-                    expiration = token.ValidTo
+                    expiration = token.ValidTo,
+                    role = userRoles.FirstOrDefault()
                 });
             }
             return Unauthorized();
         }
+
+
+        [HttpPost]
+        [Authorize]
+        [Route("Logout")]
+        public async Task<IActionResult> Logout()
+        {
+            var cookieOptions = new CookieOptions
+            {
+                Expires = DateTime.Now.AddDays(-1),
+                HttpOnly = true
+            };
+            Response.Cookies.Append("jwt", "", cookieOptions);
+
+            return Ok(new Response { Status = "Success", Message = "User logged out successfully!" });
+        }
+
+
+
+
+
 
         [HttpPost]
         [Route("Register")]
@@ -175,6 +199,8 @@ namespace JWTAuthentication.NET6._0.Controllers
         }
 
 
+
+        
 
         private JwtSecurityToken GetToken(List<Claim> authClaims)
         {

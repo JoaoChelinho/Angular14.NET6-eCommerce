@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { HomeModule } from './home/home.module';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CartComponent } from './cart/cart.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [AppComponent, EditsComponent, CartComponent],
@@ -22,6 +23,7 @@ import { CartComponent } from './cart/cart.component';
     CoreModule,
     HomeModule,
     FormsModule,
+    ToastrModule.forRoot()
   ],
 
   providers: [],

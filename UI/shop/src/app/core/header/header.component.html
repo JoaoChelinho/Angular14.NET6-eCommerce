@@ -1,26 +1,23 @@
-<header
-  class="d-flex flex-row align-items-center justify-content-between p-3 px-4 mb-3 bg-white border-bottom fixed-top shadow-sm"
->
+<header class="d-flex flex-row align-items-center justify-content-between p-3 px-4 mb-3 bg-white border-bottom fixed-top shadow-sm">
   <div>
     <nav class="my-2 text-uppercase fs-3 d-flex menu-spacing">
-      <!--  <a class="p-2" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a> -->
       <a class="p-2 left" routerLink="/shop" routerLinkActive="active">Produtos</a>
       <a class="p-2" routerLink="/novidades" routerLinkActive="active">Novidades</a>
-      <a class="p-2" routerLink="/edits" routerLinkActive="active">Gestão</a>
+      <a class="p-2" routerLink="/edits" routerLinkActive="active" *ngIf="isAdminOrManager">Gestão</a>
     </nav>
   </div>
   <div class="logo">
-    <img
-      src="./assets/images/logogrande.jpg"
-      alt="Logo"
-      class="logo mx-auto d-block"
-      routerLink="/"
-    />
+    <img src="./assets/images/logogrande.jpg" alt="Logo" class="logo mx-auto d-block" routerLink="/" />
   </div>
 
   <div class="d-flex align-items-center ms-auto">
-    <a routerLink="/login" class="btn btn-outline-secondary me-2">Login</a>
-    <a routerLink="/registo" class="btn btn-outline-secondary me-3">Registo</a>
+    <ng-container *ngIf="isUserLoggedIn">
+      <a (click)="logout()" class="btn btn-outline-secondary me-3">Logout</a>
+    </ng-container>
+    <ng-container *ngIf="!isUserLoggedIn">
+      <a routerLink="/login" class="btn btn-outline-secondary me-2">Login</a>
+      <a routerLink="/registo" class="btn btn-outline-secondary me-3">Registo</a>
+    </ng-container>
 
     <a class="position-relative">
       <i routerLink="/cart" class="fa fa-shopping-cart fa-2x me-5 text-dark right"></i>

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ShopService } from 'src/app/shop/shop.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registo',
@@ -22,7 +24,7 @@ export class RegistoComponent {
     }
   }
 
-  constructor(private shopService: ShopService) { }
+  constructor(private shopService: ShopService, private toastr: ToastrService, private router: Router) { }
 
   registerUser(event: { preventDefault: () => void; }) {
     event.preventDefault();
@@ -37,11 +39,16 @@ export class RegistoComponent {
       response => {
         user = response;
         console.log(response);
-        // Adicione aqui a lógica para lidar com a resposta
+        this.toastr.success('Registo bem sucedido!');
+        this.router.navigate(['/login']);
       },
       error => {
         console.log(error);
-
+        if (error.status === 500) {
+          this.toastr.error('O username já existe.');
+        } else {
+          this.toastr.error('Ocorreu um erro ao registar o usuário.');
+        }
       }
     );
   }

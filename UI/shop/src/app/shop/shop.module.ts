@@ -11,7 +11,6 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 
 
-
 @NgModule({
   declarations: [
     ShopComponent,

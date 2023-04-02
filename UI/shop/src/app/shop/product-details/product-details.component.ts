@@ -16,7 +16,7 @@ export class ProductDetailsComponent implements OnInit {
   id: number;
   cartItemCount = 0;
   cartItems: CartItem[] = [];
-
+  isAdminOrManager: boolean = false;
 
 
   constructor(
@@ -32,6 +32,9 @@ export class ProductDetailsComponent implements OnInit {
     this.cartService.cartUpdated.subscribe(() => {
       this.cartItems = this.cartService.getCartItems();
     });
+
+    const role = localStorage.getItem('role');
+    this.isAdminOrManager = role === 'Admin' || role === 'Manager';
   }
 
   loadProduct() {

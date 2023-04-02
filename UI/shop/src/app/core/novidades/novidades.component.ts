@@ -15,9 +15,10 @@ export class NovidadesComponent  implements OnInit {
   constructor(private shopService: ShopService) { }
 
   ngOnInit(): void {
-    this.shopService.getNewestProducts().subscribe(products => {
+    this.shopService.getAllNewestProducts().subscribe(products => {
       this.newestProducts = products;
     });
+
   }
 
 }
